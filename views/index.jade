@@ -1,0 +1,25 @@
+html(lang="en")
+    head
+        include base
+        title Home
+
+    body
+        div(align='center')
+            h3 This is the homepage
+        div(align='center')
+            div
+                button#insert.btn.btn-primary(type="button") Insert New
+            div
+                button#view-all.btn.btn-primary(type="button") All Books
+        
+        script.
+            var fetchEle = function(idee){
+                return document.getElementById(idee);
+            }
+            //fetchEle('insert')
+            fetchEle('insert').addEventListener('click', function(){
+                window.location = 'http://localhost:3000/insert';
+            });
+            fetchEle('view-all').addEventListener('click', function(){
+                window.location = 'http://localhost:3000/viewall';
+            }); 
