@@ -13,28 +13,30 @@ html(lang="en")
             div.row
                 div.col-md-6.offset-md-3.form-container-div
 
-                    div.form-group.row
-                        label.col-form-label.col-md-3(for="ititle") Title
-                        div.col-md-9
-                            input#ititle.form-control(type="text", name="ititle")
-                
-                    div.form-group.row
-                        label.col-form-label.col-md-3(for="iauthor") Author
-                        div.col-md-9
-                            input#iauthor.form-control(type="text", name="iauthor")
+                    form(action="/insert", method="post")
+                    
+                        div.form-group.row
+                            label.col-form-label.col-md-3(for="ititle") Title
+                            div.col-md-9
+                                input#ititle.form-control(type="text", name="ititle")
+                    
+                        div.form-group.row
+                            label.col-form-label.col-md-3(for="iauthor") Author
+                            div.col-md-9
+                                input#iauthor.form-control(type="text", name="iauthor")
 
-                    div.form-group.row
-                        label.col-form-label.col-md-3(for="ipubdate") Publish Date
-                        div.col-md-9
-                            //input#ipubdate.form-control(type="text", name="ipubdate")
-                            input#ipubdate.form-control(type="date", name="ipubdate")
+                        div.form-group.row
+                            label.col-form-label.col-md-3(for="ipubdate") Publish Date
+                            div.col-md-9
+                                //input#ipubdate.form-control(type="text", name="ipubdate")
+                                input#ipubdate.form-control(type="date", name="ipubdate")
 
-                    div.form-group.row
-                        label.col-form-label.col-md-3(for="iprice") Price
-                        div.col-md-9
-                            input#iprice.form-control(type="text", name="iprice")
+                        div.form-group.row
+                            label.col-form-label.col-md-3(for="iprice") Price
+                            div.col-md-9
+                                input#iprice.form-control(type="text", name="iprice")
 
-                    div.form-group.row
-                        div.col-md-12
-                            button.btn.btn-primary(type="submit") Submit
+                        div.form-group.row
+                            div.col-md-12
+                                button.btn.btn-primary(type="submit") Submit
                 

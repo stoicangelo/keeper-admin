@@ -4,27 +4,39 @@ html(lang="en")
         include base
         title Document
     body
-        h3 VIEW ALL
+        h3(align='center') VIEW ALL
 
-        div.container
+        div.container-fluid
             table.table
                 div.row
                     tr
                         th
-                            div.col-md-2 head1
+                            div.col-md-2 Title
                         th
-                            div.col-md-2 head2
+                            div.col-md-2 Author
                         th 
-                            div.col-md-2 head3
+                            div.col-md-2 Published On
                         th
-                            div.col-md-2 head4
+                            div.col-md-2 Price
+                        th
+                            div.col-md-2 Action
                 div.row
-                    tr
-                        td
-                            div.col-md-2 a1
-                        td
-                            div.col-md-2 a2
-                        td
-                            div.col-md-2 a3
-                        td
-                            div.col-md-2 a4
+                    - each book in data
+                        tr
+                            td
+                                div.col-md-2 #{book.title}
+                            td
+                                div.col-md-2 #{book.author}
+                            - var pubdate = book.publishDate;
+                            - pubdate = pubdate.toString().substring(4,15);
+                            td
+                                div.col-md-2 #{pubdate}
+                            
+                            td
+                                div.col-md-2 #{book.price}
+                            td
+                                div.col-md-2
+                                    a(href='/delete?title='+book.title) delete
+                        
+                    
+                    
