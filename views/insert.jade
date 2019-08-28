@@ -11,7 +11,7 @@ html(lang="en")
         
         div.container
             div.row
-                div.col-md-6.offset-md-3.form-container-div
+                div.col-md-6.offset-md-3.form-container-div.insert-div
 
                     form(action="/insert", method="post")
                     
@@ -39,4 +39,9 @@ html(lang="en")
                         div.form-group.row
                             div.col-md-12
                                 button.btn.btn-primary(type="submit") Submit
+
+                div.messege-box.col-md-6.offset-md-3
+                    span#messege-span
+                        if bookExists
+                            p Book already exists. If you are trying to enter a book by another author having same title, alter accordingly
                 

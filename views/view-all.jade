@@ -24,11 +24,15 @@ html(lang="en")
                     - each book in data
                         tr
                             td
-                                div.col-md-2 #{book.title}
+                                div.col-md-2 
+                                a(href='/detail?title='+book.title) #{book.title}
                             td
                                 div.col-md-2 #{book.author}
                             - var pubdate = book.publishDate;
-                            - pubdate = pubdate.toString().substring(4,15);
+                            - console.log(pubdate);
+                            if pubdate 
+                                - console.log('pubdate ache');
+                            //- pubdate = pubdate.toString().substring(4,15);
                             td
                                 div.col-md-2 #{pubdate}
                             

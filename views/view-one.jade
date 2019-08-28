@@ -2,5 +2,38 @@
 html(lang="en")
     head
         include base
-        title Document
+        title #{data.title}
     body
+        div(align="center")
+            h3 DETAILS OF #{data.title}
+
+        div.container
+            div.row
+                div.col-md-6.offset-md-3.form-container-div.update-div
+
+                    form(action="/update", method="post")
+                        
+                        div.form-group.row
+                            label.col-form-label.col-md-3(for="utitle") Title
+                            div.col-md-9
+                                input#utitle.form-control(type="text", name="utitle", value=data.title)
+                    
+                        div.form-group.row
+                            label.col-form-label.col-md-3(for="uauthor") Author
+                            div.col-md-9
+                                input#uauthor.form-control(type="text", name="uauthor", value=data.author)
+                        - var pubDate = data.publishDate.toISOString().replace(/T.*$/,'');
+                        div.form-group.row
+                            label.col-form-label.col-md-3(for="upubdate") Publish Date
+                            div.col-md-9
+                                //input#upubdate.form-control(type="text", name="upubdate")
+                                input#upubdate.form-control(type="date", name="upubdate", value=pubDate)
+
+                        div.form-group.row
+                            label.col-form-label.col-md-3(for="uprice") Price
+                            div.col-md-9
+                                input#uprice.form-control(type="text", name="uprice", value=data.price)
+
+                        div.form-group.row
+                            div.col-md-12
+                                button.btn.btn-primary(type="submit") Update

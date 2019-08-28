@@ -1,4 +1,13 @@
-div.form-container-div{
+div.insert-div{
     background-color:lightblue;
+}
+
+div.update-div{
+    background-color: cornsilk;
+}
+
+span#messege-span{
+    font-size: 11px;
+    color: crimson;
 }
 
