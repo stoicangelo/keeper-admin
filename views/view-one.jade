@@ -16,24 +16,65 @@ html(lang="en")
                         div.form-group.row
                             label.col-form-label.col-md-3(for="utitle") Title
                             div.col-md-9
-                                input#utitle.form-control(type="text", name="utitle", value=data.title)
+                                input#utitle.form-control(type="text", name="utitle", disabled, value=data.title)
                     
                         div.form-group.row
                             label.col-form-label.col-md-3(for="uauthor") Author
                             div.col-md-9
-                                input#uauthor.form-control(type="text", name="uauthor", value=data.author)
+                                input#uauthor.form-control(type="text", name="uauthor", disabled, value=data.author)
                         - var pubDate = data.publishDate.toISOString().replace(/T.*$/,'');
                         div.form-group.row
                             label.col-form-label.col-md-3(for="upubdate") Publish Date
                             div.col-md-9
                                 //input#upubdate.form-control(type="text", name="upubdate")
-                                input#upubdate.form-control(type="date", name="upubdate", value=pubDate)
+                                input#upubdate.form-control(type="date", name="upubdate", disabled, value=pubDate)
 
                         div.form-group.row
                             label.col-form-label.col-md-3(for="uprice") Price
                             div.col-md-9
-                                input#uprice.form-control(type="text", name="uprice", value=data.price)
+                                input#uprice.form-control(type="text", name="uprice", disabled, value=data.price)
 
                         div.form-group.row
-                            div.col-md-12
-                                button.btn.btn-primary(type="submit") Update
+                            div.col-md-3
+                                button#impact-btn.btn.btn-primary.d-none(type="submit") Update
+                            div.col-md-3
+                                button#update-btn.btn.btn-info.d-inline-block(type="button") Update
+
+                            div.col-md-3.vanish
+                                button#dont-btn.btn.btn-warning.vanish.d-none(type="button") Dont Update
+            
+        script.
+            var fetchEle = function(idee){
+                return document.getElementById(idee);
+            }
+            var ubtn = fetchEle('update-btn');
+            var dbtn = fetchEle('dont-btn');
+            var ibtn = fetchEle('impact-btn');
+            ubtn.addEventListener('click', function(e){
+                ibtn.classList.toggle('d-none');
+                ibtn.classList.toggle('d-inline-block');
+                ubtn.classList.toggle('d-inline-block');
+                ubtn.classList.toggle('d-none');
+                dbtn.classList.toggle('d-none');
+                dbtn.classList.toggle('d-inline-block');
+                var inputs = document.getElementsByClassName('form-control');
+                Array.prototype.forEach.call(inputs, function(item){
+                    item.removeAttribute('disabled');
+                });
+            });
+
+
+            dbtn.addEventListener('click', function(){
+                ibtn.classList.toggle('d-inline-block');
+                ibtn.classList.toggle('d-none');
+                ubtn.classList.toggle('d-none');
+                ubtn.classList.toggle('d-inline-block');
+                dbtn.classList.toggle('d-none');
+                dbtn.classList.toggle('d-inline-block');
+                var inputs = document.getElementsByClassName('form-control');
+                Array.prototype.forEach.call(inputs, function(item){
+                    item.setAttribute('disabled', 'true');
+                });
+            });
+
+

@@ -3,7 +3,6 @@ html(lang="en")
     head
         include base
         title Insert Book
-        link(href="home.css", rel="stylesheet", type="text/css")
         
     body
         div(align="center")
@@ -37,11 +36,14 @@ html(lang="en")
                                 input#iprice.form-control(type="text", name="iprice")
 
                         div.form-group.row
-                            div.col-md-12
+                            div.col-md-6
                                 button.btn.btn-primary(type="submit") Submit
+                            
 
-                div.messege-box.col-md-6.offset-md-3
+                div.messege-box.col-md-7.offset-md-3
                     span#messege-span
                         if bookExists
-                            p Book already exists. If you are trying to enter a book by another author having same title, alter accordingly
+                            p 
+                                b Book already exists. If you are trying to enter a book by another author having same title, alter accordingly
+
                 

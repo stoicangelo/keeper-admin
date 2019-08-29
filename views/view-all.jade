@@ -29,10 +29,7 @@ html(lang="en")
                             td
                                 div.col-md-2 #{book.author}
                             - var pubdate = book.publishDate;
-                            - console.log(pubdate);
-                            if pubdate 
-                                - console.log('pubdate ache');
-                            //- pubdate = pubdate.toString().substring(4,15);
+                            - pubdate = pubdate.toString().substring(4,15);
                             td
                                 div.col-md-2 #{pubdate}
                             
