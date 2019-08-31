@@ -11,9 +11,14 @@ span#messege-span{
     color: crimson;
 }
 
-div.gif-container{
+ div.gif-container{
     margin-top : 50px;
     margin-bottom: 50px;
+}
+
+body{
+    color: purple;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 

@@ -11,11 +11,14 @@ html(lang="en")
         div.gif-container(align='center')
             img.img-thumbnail(src="giphy.gif")
 
-        div(align='center')
-            div
-                button#insert.btn.btn-primary(type="button") Insert New
-            div
-                button#view-all.btn.btn-primary(type="button") All Books
+        div.container
+            div.row
+                div.col-md-6
+                    button#insert.btn.btn-primary.offset-md-7(type="button") Insert New
+                div.col-md-6
+                    button#view-all.btn.btn-primary.offset-md-3(type="button") All Books
+
+
         
         script.
             var fetchEle = function(idee){
