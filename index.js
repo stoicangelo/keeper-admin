@@ -34,12 +34,12 @@ app.get('/', function(req, res){
     res.render('index');
 });
 
-app.get('/insert', function(req, res){
-    res.render('insert');
+app.get('/insert-one', function(req, res){
+    res.render('insert-one');
     //res.sendFile(__dirname+'/public/insert.html');
 });
 
-app.post('/insert', function(req, res) {
+app.post('/insert-one', function(req, res) {
     var book_title = req.body.ititle;
     Book.findOne({title : book_title}).then(function(result){
             if(!result){
@@ -59,7 +59,7 @@ app.post('/insert', function(req, res) {
                 });
             }
             else{
-                res.render('insert', {bookExists : true});
+                res.render('insert-one', {bookExists : true});
             }
     }).catch(function(err){
         console.log('error is : '+err.toString());
