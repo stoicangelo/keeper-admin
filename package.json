@@ -9,8 +9,10 @@
   "author": "aniket",
   "license": "ISC",
   "dependencies": {
+    "csv-parse": "^4.8.3",
     "express": "^4.17.1",
     "jade": "^1.11.0",
-    "mongoose": "^5.6.10"
+    "mongoose": "^5.6.10",
+    "multer": "^1.4.2"
   }
 }

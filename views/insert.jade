@@ -1,0 +1,43 @@
+html(lang="en")
+    head
+        include base
+        title Insert record
+
+    body
+        div#insert-btn-container(align='center')
+            div.row
+                div.col-md-6
+                    button#insert-one-btn.btn.btn-primary(type="button") Insert One
+                div.col-md-6.upload-btn-container
+                    div#upload-blk-btn.upload-blk-btn.btn.btn-primary Upload from CSV
+                    span#file-val
+                    form#file-form(action='/upload-csv', method='post', enctype="multipart/form-data")
+                        input#file-upload-btn.file-upload-btn(type='file', name='thefile')
+    script.
+            var uploadInp = fetchEle('file-upload-btn');
+            var uploadDiv = fetchEle('upload-blk-btn');
+            var insertOne = fetchEle('insert-one-btn');
+            
+            insertOne.addEventListener('click', function(){
+                window.location = 'http://localhost:3000/insert-one';
+            });
+            
+            uploadDiv.addEventListener('click', function(){
+                fetchEle('file-upload-btn').click();
+            });
+
+            uploadInp.addEventListener('change', function(){
+                var absFileName = uploadInp.value;
+                fetchEle('file-val').innerHTML = absFileName;
+                var confirmResult = confirm('Are you sure you want to upload the following CSV file ::: '+absFileName);
+                if(confirmResult){
+                   fetchEle('file-form').submit(); 
+                }
+                else{
+                    alert('canellled');
+                }
+
+            });
+            //- fetchEle('view-all').addEventListener('click', function(){
+            //-     window.location = 'http://localhost:3000/viewall';
+            //- }); 

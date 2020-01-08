@@ -21,4 +21,11 @@ body{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
+#insert-btn-container{
+    margin-top: 200px;
+}
+
+input.file-upload-btn{
+    display : none;
+}
 

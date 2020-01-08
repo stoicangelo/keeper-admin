@@ -4,7 +4,14 @@ const app = express();
 const mgoose = require('mongoose');
 const Schema = mgoose.Schema;
 const bodyParser = require('body-parser');
+const multer = require('multer');
+const csvparse = require('csv-parse');
+const fs = require('fs');
 
+var upload = multer({ dest : './uploads/'});
+// var parser = csvparse({
+//     delimiter: ','
+// });
 
 mgoose.connect('mongodb://localhost:27017/crudDB', {useNewUrlParser: true}, function(err){
     if(err){
@@ -26,12 +33,18 @@ var Book = mgoose.model('Book', bookSchema);
 app.use(express.static(path.join(__dirname,'public')));
 app.set('view engine', 'jade');
 app.use(bodyParser.urlencoded({ extended: true }));
+
 //app.use(express.static('images'));
 
 
 app.get('/', function(req, res){
     //res.sendFile(__dirname+'/public/index.html');
     res.render('index');
+});
+
+app.get('/insert', function(req, res){
+    res.render('insert');
+    //res.sendFile(__dirname+'/public/insert.html');
 });
 
 app.get('/insert-one', function(req, res){
@@ -119,7 +132,33 @@ app.post('/update', function(req, res) {
     });
 });
 
+app.post('/upload-csv', upload.single('thefile'), function(req, res, next){
+    fs.createReadStream(req.file.path)
+    .pipe(csvparse())
+    .on("data", function (row) {
+        insertBookDataRow(row);
+    })
+    .on("end", function () {
+      fs.unlinkSync(req.file.path);   // remove temp file
+      res.redirect('/viewall');
+    })
+});
+
 app.listen(3000, function(){
     console.log('listening on port 3000');
     console.log('enjoy');
 });
+
+
+var insertBookDataRow = function(data){
+    var book = new Book();
+    book.title = data[0];
+    book.author = data[1];
+    book.publishDate = data[2];
+    book.price = data[3];
+    book.save(function(err) {
+        if(err){
+            console.log('error occured while inserting Book record : '+err);
+        }
+    });
+}
