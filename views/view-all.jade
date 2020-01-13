@@ -37,7 +37,21 @@ html(lang="en")
                                 div.col-md-2 #{book.price}
                             td
                                 div.col-md-2
-                                    a(href='/delete?title='+book.title) delete
+                                    -var idee = 'remove-'+(book.title).replace(' ','-')
+                                    a.delete-link(href='/delete?title='+book.title, id=idee, onclick='return deleteLinkClick("'+idee+'")') delete
                         
                     
-                    
+            script.
+                function deleteLinkClick(idee){
+                    var bookName = idee.substring(7).replace('-',' ');
+                    var x = confirm('Are you sure you want to delete '+bookName);
+                    //alert(bookName);
+                    return x;
+                }
+                //- var deleteLinks = document.getElementsByClassName('delete-link')
+                //- for(var i=0; i<deleteLinks.length; i++){
+                //-     var dlink = deleteLinks[i];
+                //-     dlink.addEventListener('click', function(element){
+                //-         console.log(element);
+                //-     })
+                //- }
